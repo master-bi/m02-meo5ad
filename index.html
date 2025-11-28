@@ -36,20 +36,39 @@
     }
     h1 { font-size:20px; margin:10px 0 8px; color:#FF0000; font-weight:bold; }
     p  { margin:4px 0; color:#e5e5e5; font-size:15px; }
+
+    /* 黑金版按鈕 */
     .btn-enter {
       margin-top:18px;
       display:block;
       width:100%;
       padding:14px 0;
-      background:#FF0000;
-      color:#ffffff;
+      background:#050505;
+      border-radius:999px;
+      border:1px solid #D4AF37;              /* 金色邊框 */
+      color:#FFD97A;                          /* 金色文字 */
       font-size:16px;
       font-weight:bold;
-      border-radius:12px;
       text-decoration:none;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      box-shadow:
+        0 0 18px rgba(0,0,0,.8),
+        0 0 12px rgba(212,175,55,.6);        /* 金色光暈 */
+      transition:background .2s ease, box-shadow .2s ease, transform .15s ease;
     }
     .btn-enter:hover {
-      background:#d40000;
+      background:#101010;
+      box-shadow:
+        0 0 24px rgba(0,0,0,.9),
+        0 0 18px rgba(255,215,128,.9);
+      transform:translateY(-1px);
+    }
+    .btn-enter:active {
+      transform:translateY(0);
+      box-shadow:
+        0 0 14px rgba(0,0,0,.9),
+        0 0 10px rgba(212,175,55,.7);
     }
   </style>
 </head>
@@ -57,10 +76,10 @@
 <body>
   <main class="wrap">
     <img class="logo" src="./ofa168-logo-300.png" alt="Logo"/>
-    <h1 id="t-title">Searching for a secure route</h1>
-    <p id="t-desc">Detecting the best connection for you.</p>
+    <h1 id="t-title">Please do not trust any proxy betting or top-up services, they are scams.</h1>
+    <p id="t-desc">Please keep your account and password secure to avoid any loss.</p>
 
-    <!-- 手動跳轉按鈕 -->
+    <!-- 黑金版手動跳轉按鈕 -->
     <a id="enterBtn" class="btn-enter" href="#">
       進入官網
     </a>
@@ -69,14 +88,14 @@
   <script>
     const OFFICIAL_URL = 'https://fbads.ofa168my.com/login?id=register';
 
-    /* 多語系設定：新增 enterBtn */
+    // 多語系：已改成防詐提醒內容
     const I18N = {
       'en': {
         htmlLang: 'en',
         titleTag: 'MT Interactive Platform',
         metaDesc: 'A brand new entertainment platform with multiple interactive modes',
-        h1: 'Searching for a secure route',
-        p: 'Detecting the best connection for you.',
+        h1: 'Do not trust any messages about proxy betting, top-up agents, or guaranteed wins — they are all scams.',
+        p: 'Please keep your account and password secure to avoid any loss.',
         btn: 'Enter Website',
         alt: 'Logo'
       },
@@ -84,8 +103,8 @@
         htmlLang: 'zh-Hant',
         titleTag: 'MT真人互動平台',
         metaDesc: '全新的娛樂平台，多種互動模式',
-        h1: '正在尋找安全路線中',
-        p: '正在為您檢測最佳連線。',
+        h1: '請勿相信任何代操、代儲、穩贏等訊息，皆為詐騙。',
+        p: '請妥善保管帳號密碼，以免造成損失。',
         btn: '進入官網',
         alt: '標誌'
       },
@@ -93,8 +112,8 @@
         htmlLang: 'zh-CN',
         titleTag: 'MT真人互动平台',
         metaDesc: '全新的娱乐平台，多种互动模式',
-        h1: '正在寻找安全线路中',
-        p: '正在为您检测最佳连接。',
+        h1: '请勿相信任何代操、代储、稳赢等信息，皆为诈骗。',
+        p: '请妥善保管账号密码，以免造成损失。',
         btn: '进入官网',
         alt: '标志'
       },
@@ -102,8 +121,8 @@
         htmlLang: 'zh-HK',
         titleTag: 'MT 互動平台',
         metaDesc: '全新娛樂平台，多種互動模式',
-        h1: '緊搵緊安全路線中',
-        p: '幫你檢測最穩陣嘅連線。',
+        h1: '請勿相信任何代操、代儲、穩贏等訊息，全部都係詐騙。',
+        p: '請妥善保管帳號同密碼，以免造成損失。',
         btn: '進入官網',
         alt: '標誌'
       },
@@ -111,8 +130,8 @@
         htmlLang: 'km',
         titleTag: 'វេទិកាអន្តរកម្ម MT',
         metaDesc: 'វេទិកាកម្សាន្តថ្មីមួយ មានរបៀបអន្តរកម្មជាច្រើន',
-        h1: 'កំពុងស្វែងរកផ្លូវសុវត្ថិភាព',
-        p: 'កំពុងកំណត់ការតភ្ជាប់ល្អបំផុតសម្រាប់អ្នក។',
+        h1: 'សូមកុំជឿលើសារណាមួយអំពីសេវាកម្មលេងជំនួស ដាក់ប្រាក់ជំនួស ឬការធានាឈ្នះ មូលដ្ឋានទាំងអស់គឺជាការលួចបោក។',
+        p: 'សូមរក្សាគណនី និងពាក្យសម្ងាត់របស់អ្នកឲ្យមានសុវត្ថិភាព ដើម្បីជៀសវាងការខាតបង់។',
         btn: 'ចូលទៅគេហទំព័រ',
         alt: 'ឡូហ្គោ'
       },
@@ -120,8 +139,8 @@
         htmlLang: 'vi',
         titleTag: 'Nền tảng tương tác MT',
         metaDesc: 'Nền tảng giải trí mới với nhiều chế độ tương tác',
-        h1: 'Đang tìm tuyến đường an toàn',
-        p: 'Đang kiểm tra kết nối tốt nhất cho bạn.',
+        h1: 'Vui lòng không tin vào bất kỳ dịch vụ uỷ thác chơi hộ, nạp hộ hay cam kết thắng nào, tất cả đều là lừa đảo.',
+        p: 'Hãy giữ kín tài khoản và mật khẩu để tránh thiệt hại.',
         btn: 'Vào trang chính',
         alt: 'Biểu trưng'
       },
@@ -129,8 +148,8 @@
         htmlLang: 'th',
         titleTag: 'แพลตฟอร์มโต้ตอบ MT',
         metaDesc: 'แพลตฟอร์มความบันเทิงรูปแบบใหม่ มีโหมดโต้ตอบหลากหลาย',
-        h1: 'กำลังค้นหาเส้นทางที่ปลอดภัย',
-        p: 'กำลังตรวจสอบการเชื่อมต่อที่ดีที่สุดให้คุณ',
+        h1: 'โปรดอย่าเชื่อบริการรับปั่น รับฝาก หรือการันตีว่าได้กำไรชัวร์ ข้อความลักษณะนี้ล้วนเป็นมิจฉาชีพ',
+        p: 'กรุณาเก็บรักษาบัญชีและรหัสผ่านให้ปลอดภัย เพื่อหลีกเลี่ยงความเสียหาย',
         btn: 'เข้าสู่เว็บไซต์',
         alt: 'โลโก้'
       },
@@ -138,8 +157,8 @@
         htmlLang: 'ms',
         titleTag: 'Platform Interaktif MT',
         metaDesc: 'Platform hiburan baharu dengan pelbagai mod interaktif',
-        h1: 'Sedang mencari laluan yang selamat',
-        p: 'Sedang mengesan sambungan terbaik untuk anda.',
+        h1: 'Jangan percayai sebarang tawaran khidmat main akaun, tambah nilai bagi pihak anda atau janji menang pasti; semuanya adalah penipuan.',
+        p: 'Sila lindungi akaun dan kata laluan anda dengan baik bagi mengelakkan kerugian.',
         btn: 'Masuk Laman Rasmi',
         alt: 'Logo'
       }
