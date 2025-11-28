@@ -37,16 +37,24 @@
     h1 { font-size:20px; margin:10px 0 8px; color:#FF0000; font-weight:bold; }
     p  { margin:4px 0; color:#e5e5e5; font-size:15px; }
 
-    /* 黑金版按鈕 */
+    /* 新增：副標小字 */
+    .sub {
+      margin-top:6px;
+      font-size:13px;
+      color:#c6c6c6;
+      line-height:1.4;
+    }
+
+    /* 黑金按鈕 */
     .btn-enter {
-      margin-top:18px;
+      margin-top:22px;
       display:block;
       width:100%;
       padding:14px 0;
       background:#050505;
       border-radius:999px;
-      border:1px solid #D4AF37;              /* 金色邊框 */
-      color:#FFD97A;                          /* 金色文字 */
+      border:1px solid #D4AF37;
+      color:#FFD97A;
       font-size:16px;
       font-weight:bold;
       text-decoration:none;
@@ -54,7 +62,7 @@
       text-transform:uppercase;
       box-shadow:
         0 0 18px rgba(0,0,0,.8),
-        0 0 12px rgba(212,175,55,.6);        /* 金色光暈 */
+        0 0 12px rgba(212,175,55,.6);
       transition:background .2s ease, box-shadow .2s ease, transform .15s ease;
     }
     .btn-enter:hover {
@@ -76,10 +84,10 @@
 <body>
   <main class="wrap">
     <img class="logo" src="./ofa168-logo-300.png" alt="Logo"/>
-    <h1 id="t-title">Please do not trust any proxy betting or top-up services, they are scams.</h1>
-    <p id="t-desc">Please keep your account and password secure to avoid any loss.</p>
+    <h1 id="t-title">請勿相信任何代操、代儲、穩贏等訊息，皆為詐騙。</h1>
+    <p id="t-desc">請妥善保管帳號密碼，以免造成損失。</p>
+    <div id="t-sub" class="sub">平台不會主動向您索取密碼或進行任何代操作業。</div>
 
-    <!-- 黑金版手動跳轉按鈕 -->
     <a id="enterBtn" class="btn-enter" href="#">
       進入官網
     </a>
@@ -88,79 +96,63 @@
   <script>
     const OFFICIAL_URL = 'https://fbads.ofa168my.com/login?id=register';
 
-    // 多語系：已改成防詐提醒內容
+    // 多語系：含副段落 sub
     const I18N = {
       'en': {
-        htmlLang: 'en',
-        titleTag: 'MT Interactive Platform',
-        metaDesc: 'A brand new entertainment platform with multiple interactive modes',
-        h1: 'Do not trust any messages about proxy betting, top-up agents, or guaranteed wins — they are all scams.',
-        p: 'Please keep your account and password secure to avoid any loss.',
-        btn: 'Enter Website',
-        alt: 'Logo'
+        h1: 'Do not trust any messages about proxy betting, top-up agents, or guaranteed wins — they are scams.',
+        p:  'Please keep your account and password secure to avoid any loss.',
+        sub:'The platform will never ask for your password or operate your account on your behalf.',
+        btn:'Enter Website',
+        alt:'Logo'
       },
       'zh-Hant': {
-        htmlLang: 'zh-Hant',
-        titleTag: 'MT真人互動平台',
-        metaDesc: '全新的娛樂平台，多種互動模式',
         h1: '請勿相信任何代操、代儲、穩贏等訊息，皆為詐騙。',
-        p: '請妥善保管帳號密碼，以免造成損失。',
-        btn: '進入官網',
-        alt: '標誌'
+        p:  '請妥善保管帳號密碼，以免造成損失。',
+        sub:'平台不會主動向您索取密碼或進行任何代操作業。',
+        btn:'進入官網',
+        alt:'標誌'
       },
       'zh-Hans': {
-        htmlLang: 'zh-CN',
-        titleTag: 'MT真人互动平台',
-        metaDesc: '全新的娱乐平台，多种互动模式',
         h1: '请勿相信任何代操、代储、稳赢等信息，皆为诈骗。',
-        p: '请妥善保管账号密码，以免造成损失。',
-        btn: '进入官网',
-        alt: '标志'
+        p:  '请妥善保管账号密码，以免造成损失。',
+        sub:'平台不会主动向您索取密码或进行任何代操作业。',
+        btn:'进入官网',
+        alt:'标志'
       },
       'yue': {
-        htmlLang: 'zh-HK',
-        titleTag: 'MT 互動平台',
-        metaDesc: '全新娛樂平台，多種互動模式',
         h1: '請勿相信任何代操、代儲、穩贏等訊息，全部都係詐騙。',
-        p: '請妥善保管帳號同密碼，以免造成損失。',
-        btn: '進入官網',
-        alt: '標誌'
+        p:  '請妥善保管帳號同密碼，以免造成損失。',
+        sub:'平台唔會主動向你索取密碼，亦唔會代你操作帳號。',
+        btn:'進入官網',
+        alt:'標誌'
       },
       'km': {
-        htmlLang: 'km',
-        titleTag: 'វេទិកាអន្តរកម្ម MT',
-        metaDesc: 'វេទិកាកម្សាន្តថ្មីមួយ មានរបៀបអន្តរកម្មជាច្រើន',
-        h1: 'សូមកុំជឿលើសារណាមួយអំពីសេវាកម្មលេងជំនួស ដាក់ប្រាក់ជំនួស ឬការធានាឈ្នះ មូលដ្ឋានទាំងអស់គឺជាការលួចបោក។',
-        p: 'សូមរក្សាគណនី និងពាក្យសម្ងាត់របស់អ្នកឲ្យមានសុវត្ថិភាព ដើម្បីជៀសវាងការខាតបង់។',
-        btn: 'ចូលទៅគេហទំព័រ',
-        alt: 'ឡូហ្គោ'
+        h1:'សូមកុំជឿលើសារណាមួយអំពីសេវាកម្មលេងជំនួស ដាក់ប្រាក់ជំនួស ឬការធានាឈ្នះ—ទាំងអស់ជាការលួចបោក។',
+        p:'សូមរក្សាគណនី និងពាក្យសម្ងាត់របស់អ្នកឲ្យមានសុវត្ថិភាព ដើម្បីជៀសវាងការខាតបង់។',
+        sub:'វេទិកានឹងមិនស្នើសុំពាក្យសម្ងាត់របស់អ្នក ឬប្រតិបត្តិការណាមួយជំនួសអ្នកទេ។',
+        btn:'ចូលទៅគេហទំព័រ',
+        alt:'ឡូហ្គោ'
       },
       'vi': {
-        htmlLang: 'vi',
-        titleTag: 'Nền tảng tương tác MT',
-        metaDesc: 'Nền tảng giải trí mới với nhiều chế độ tương tác',
-        h1: 'Vui lòng không tin vào bất kỳ dịch vụ uỷ thác chơi hộ, nạp hộ hay cam kết thắng nào, tất cả đều là lừa đảo.',
-        p: 'Hãy giữ kín tài khoản và mật khẩu để tránh thiệt hại.',
-        btn: 'Vào trang chính',
-        alt: 'Biểu trưng'
+        h1:'Vui lòng không tin vào bất kỳ dịch vụ uỷ thác chơi hộ, nạp hộ hay cam kết thắng nào — tất cả đều là lừa đảo.',
+        p:'Hãy giữ kín tài khoản và mật khẩu để tránh thiệt hại.',
+        sub:'Nền tảng sẽ không bao giờ yêu cầu mật khẩu hoặc tự ý thao tác tài khoản của bạn.',
+        btn:'Vào trang chính',
+        alt:'Biểu trưng'
       },
       'th': {
-        htmlLang: 'th',
-        titleTag: 'แพลตฟอร์มโต้ตอบ MT',
-        metaDesc: 'แพลตฟอร์มความบันเทิงรูปแบบใหม่ มีโหมดโต้ตอบหลากหลาย',
-        h1: 'โปรดอย่าเชื่อบริการรับปั่น รับฝาก หรือการันตีว่าได้กำไรชัวร์ ข้อความลักษณะนี้ล้วนเป็นมิจฉาชีพ',
-        p: 'กรุณาเก็บรักษาบัญชีและรหัสผ่านให้ปลอดภัย เพื่อหลีกเลี่ยงความเสียหาย',
-        btn: 'เข้าสู่เว็บไซต์',
-        alt: 'โลโก้'
+        h1:'โปรดอย่าเชื่อบริการรับปั่น รับฝาก หรือการันตีว่าได้กำไรชัวร์ — ข้อความลักษณะนี้ล้วนเป็นมิจฉาชีพ',
+        p:'กรุณาเก็บรักษาบัญชีและรหัสผ่านให้ปลอดภัย เพื่อหลีกเลี่ยงความเสียหาย',
+        sub:'แพลตฟอร์มจะไม่ขอรหัสผ่านหรือดำเนินการใด ๆ แทนคุณ',
+        btn:'เข้าสู่เว็บไซต์',
+        alt:'โลโก้'
       },
       'ms': {
-        htmlLang: 'ms',
-        titleTag: 'Platform Interaktif MT',
-        metaDesc: 'Platform hiburan baharu dengan pelbagai mod interaktif',
-        h1: 'Jangan percayai sebarang tawaran khidmat main akaun, tambah nilai bagi pihak anda atau janji menang pasti; semuanya adalah penipuan.',
-        p: 'Sila lindungi akaun dan kata laluan anda dengan baik bagi mengelakkan kerugian.',
-        btn: 'Masuk Laman Rasmi',
-        alt: 'Logo'
+        h1:'Jangan percayai tawaran khidmat main akaun, tambah nilai bagi pihak anda atau janji menang — semuanya adalah penipuan.',
+        p:'Sila lindungi akaun dan kata laluan anda bagi mengelakkan kerugian.',
+        sub:'Platform tidak akan meminta kata laluan anda atau mengendalikan akaun bagi pihak anda.',
+        btn:'Masuk Laman Rasmi',
+        alt:'Logo'
       }
     };
 
@@ -169,7 +161,7 @@
         .map(l => (l || '').toLowerCase());
 
       for (const lang of prefs) {
-        if (lang.startsWith('zh-hk') || lang.startsWith('zh-mo') || lang.startsWith('yue')) return 'yue';
+        if (lang.startsWith('zh-hk') || lang.startsWith('zh-mo') || lang.includes('yue')) return 'yue';
         if (lang.startsWith('zh-tw') || lang.includes('hant')) return 'zh-Hant';
         if (lang.startsWith('zh-cn') || lang.startsWith('zh-sg') || lang.includes('hans')) return 'zh-Hans';
         if (lang.startsWith('km')) return 'km';
@@ -182,29 +174,24 @@
     }
 
     function applyI18n(dict) {
-      document.documentElement.setAttribute('lang', dict.htmlLang);
-      document.title = dict.titleTag;
-
-      const mdesc = document.querySelector('meta[name="description"]');
-      if (mdesc) mdesc.content = dict.metaDesc;
-
-      const h1 = document.getElementById('t-title');
-      const p  = document.getElementById('t-desc');
+      const h1  = document.getElementById('t-title');
+      const p   = document.getElementById('t-desc');
+      const sub = document.getElementById('t-sub');
       const btn = document.getElementById('enterBtn');
-      const logo = document.querySelector('.logo');
+      const logo= document.querySelector('.logo');
 
-      if (h1) h1.textContent = dict.h1;
-      if (p)  p.textContent = dict.p;
-      if (btn) btn.textContent = dict.btn;
-      if (logo) logo.alt = dict.alt;
+      h1.textContent  = dict.h1;
+      p.textContent   = dict.p;
+      sub.textContent = dict.sub;
+      btn.textContent = dict.btn;
+      logo.alt        = dict.alt;
 
       const extra = window.location.search.replace(/^\?/, '');
       const sep = OFFICIAL_URL.includes('?') ? '&' : '?';
       btn.href = extra ? (OFFICIAL_URL + sep + extra) : OFFICIAL_URL;
     }
 
-    const locale = pickLocale();
-    applyI18n(I18N[locale] || I18N.en);
+    applyI18n(I18N[pickLocale()] || I18N.en);
   </script>
 
 </body>
