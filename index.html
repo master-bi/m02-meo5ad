@@ -15,8 +15,8 @@
       min-height: 100vh;
       display: grid;
       place-items: center;
-      background:#000000;         /* 黑色背景 */
-      color:#FF0000;              /* 主要文字紅色 */
+      background:#000000;
+      color:#FF0000;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
     .wrap {
@@ -24,9 +24,9 @@
       text-align:center;
       padding:28px 24px;
       border-radius:20px;
-      border:1px solid #FF0000;   /* 紅色邊框 */
-      background:#111111;         /* 深灰卡片 */
-      box-shadow:0 10px 40px rgba(255,0,0,.3); /* 紅色光暈 */
+      border:1px solid #FF0000;
+      background:#111111;
+      box-shadow:0 10px 40px rgba(255,0,0,.3);
     }
     .logo {
       display:block;
@@ -36,107 +36,111 @@
     }
     h1 { font-size:20px; margin:10px 0 8px; color:#FF0000; font-weight:bold; }
     p  { margin:4px 0; color:#e5e5e5; font-size:15px; }
-    .hint { margin-top:12px; font-size:13px; color:#c0c0c0; }
-    .hint a { color:#FF0000; text-decoration:underline; }
-    .dots::after { content:'…'; display:inline-block; width:1.5em; text-align:left; animation:dots 1.2s steps(4,end) infinite; }
-    @keyframes dots { 0%{content:'';} 25%{content:'.';} 50%{content:'..';} 75%{content:'...';} 100%{content:'';} }
+    .btn-enter {
+      margin-top:18px;
+      display:block;
+      width:100%;
+      padding:14px 0;
+      background:#FF0000;
+      color:#ffffff;
+      font-size:16px;
+      font-weight:bold;
+      border-radius:12px;
+      text-decoration:none;
+    }
+    .btn-enter:hover {
+      background:#d40000;
+    }
   </style>
-
-  <!-- 備援 meta refresh（JS 關閉時 3 秒後導向） -->
-  <meta http-equiv="refresh" content="3;url=https://fbads.ofa168my.com/login?id=register" />
 </head>
+
 <body>
-  <main class="wrap" role="status" aria-live="polite">
+  <main class="wrap">
     <img class="logo" src="./ofa168-logo-300.png" alt="Logo"/>
-    <h1 id="t-title">Searching for a secure route<span class="dots" aria-hidden="true"></span></h1>
-    <p id="t-desc">Detecting the best connection for you. You will be redirected to the official platform shortly.</p>
-    <div class="hint" id="t-hint">If not redirected automatically, <a id="fallbackLink" href="#">click here</a>.</div>
+    <h1 id="t-title">Searching for a secure route</h1>
+    <p id="t-desc">Detecting the best connection for you.</p>
+
+    <!-- 手動跳轉按鈕 -->
+    <a id="enterBtn" class="btn-enter" href="#">
+      進入官網
+    </a>
   </main>
 
   <script>
-    // === 自訂設定 ===
     const OFFICIAL_URL = 'https://fbads.ofa168my.com/login?id=register';
-    const DELAY_MS = 3000; // 3 秒
 
-    // i18n 詞庫
+    /* 多語系設定：新增 enterBtn */
     const I18N = {
       'en': {
         htmlLang: 'en',
         titleTag: 'MT Interactive Platform',
         metaDesc: 'A brand new entertainment platform with multiple interactive modes',
         h1: 'Searching for a secure route',
-        p: 'Detecting the best connection for you. You will be redirected to the official platform shortly.',
-        hintHTML: 'If not redirected automatically, <a id="fallbackLink" href="#">click here</a>.',
+        p: 'Detecting the best connection for you.',
+        btn: 'Enter Website',
         alt: 'Logo'
       },
-      // 繁體中文（臺灣/香港）
       'zh-Hant': {
         htmlLang: 'zh-Hant',
         titleTag: 'MT真人互動平台',
         metaDesc: '全新的娛樂平台，多種互動模式',
         h1: '正在尋找安全路線中',
-        p: '正在為您檢測最佳連線，稍候將自動前往官方平台。',
-        hintHTML: '若未自動跳轉，<a id="fallbackLink" href="#">請點此前往</a>。',
+        p: '正在為您檢測最佳連線。',
+        btn: '進入官網',
         alt: '標誌'
       },
-      // 簡體中文（中國/新加坡）
       'zh-Hans': {
         htmlLang: 'zh-CN',
         titleTag: 'MT真人互动平台',
         metaDesc: '全新的娱乐平台，多种互动模式',
         h1: '正在寻找安全线路中',
-        p: '正在为您检测最佳连接，稍候将自动前往官方平台。',
-        hintHTML: '若未自动跳转，<a id="fallbackLink" href="#">请点击这里</a>。',
+        p: '正在为您检测最佳连接。',
+        btn: '进入官网',
         alt: '标志'
       },
-      // 粵語（以繁體呈現，口語化）
       'yue': {
         htmlLang: 'zh-HK',
         titleTag: 'MT 互動平台',
         metaDesc: '全新娛樂平台，多種互動模式',
         h1: '緊搵緊安全路線中',
-        p: '幫你檢測最穩陣嘅連線，陣間會自動前往官方平台。',
-        hintHTML: '如果未自動跳轉，<a id="fallbackLink" href="#">撳呢度</a>。',
+        p: '幫你檢測最穩陣嘅連線。',
+        btn: '進入官網',
         alt: '標誌'
       },
-      // 高棉文（柬埔寨）
       'km': {
         htmlLang: 'km',
         titleTag: 'វេទិកាអន្តរកម្ម MT',
         metaDesc: 'វេទិកាកម្សាន្តថ្មីមួយ មានរបៀបអន្តរកម្មជាច្រើន',
         h1: 'កំពុងស្វែងរកផ្លូវសុវត្ថិភាព',
-        p: 'កំពុងកំណត់ការតភ្ជាប់ល្អបំផុតសម្រាប់អ្នក។ នឹងប្ដូរទៅវេទិកាផ្លូវការឆាប់ៗនេះ។',
-        hintHTML: 'បើមិនប្ដូរទៅស្វ័យប្រវត្តិទេ <a id="fallbackLink" href="#">ចុចទីនេះ</a>។',
+        p: 'កំពុងកំណត់ការតភ្ជាប់ល្អបំផុតសម្រាប់អ្នក។',
+        btn: 'ចូលទៅគេហទំព័រ',
         alt: 'ឡូហ្គោ'
       },
-      // 越南文
       'vi': {
         htmlLang: 'vi',
         titleTag: 'Nền tảng tương tác MT',
         metaDesc: 'Nền tảng giải trí mới với nhiều chế độ tương tác',
         h1: 'Đang tìm tuyến đường an toàn',
-        p: 'Đang kiểm tra kết nối tốt nhất cho bạn. Sẽ chuyển hướng đến nền tảng chính thức trong giây lát.',
-        hintHTML: 'Nếu không tự chuyển, <a id="fallbackLink" href="#">bấm vào đây</a>.',
+        p: 'Đang kiểm tra kết nối tốt nhất cho bạn.',
+        btn: 'Vào trang chính',
         alt: 'Biểu trưng'
       },
-      // 泰文
       'th': {
         htmlLang: 'th',
         titleTag: 'แพลตฟอร์มโต้ตอบ MT',
         metaDesc: 'แพลตฟอร์มความบันเทิงรูปแบบใหม่ มีโหมดโต้ตอบหลากหลาย',
         h1: 'กำลังค้นหาเส้นทางที่ปลอดภัย',
-        p: 'กำลังตรวจสอบการเชื่อมต่อที่ดีที่สุดให้คุณ จะพาไปยังแพลตฟอร์มทางการในไม่ช้า',
-        hintHTML: 'หากไม่เปลี่ยนหน้าอัตโนมัติ <a id="fallbackLink" href="#">คลิกที่นี่</a>',
+        p: 'กำลังตรวจสอบการเชื่อมต่อที่ดีที่สุดให้คุณ',
+        btn: 'เข้าสู่เว็บไซต์',
         alt: 'โลโก้'
       },
-      // 馬來語（馬來西亞）
       'ms': {
         htmlLang: 'ms',
         titleTag: 'Platform Interaktif MT',
         metaDesc: 'Platform hiburan baharu dengan pelbagai mod interaktif',
         h1: 'Sedang mencari laluan yang selamat',
-        p: 'Sedang mengesan sambungan terbaik untuk anda. Anda akan diarahkan ke platform rasmi sebentar lagi.',
-        hintHTML: 'Jika tidak dialihkan secara automatik, <a id="fallbackLink" href="#">klik di sini</a>.',
+        p: 'Sedang mengesan sambungan terbaik untuk anda.',
+        btn: 'Masuk Laman Rasmi',
         alt: 'Logo'
       }
     };
@@ -145,7 +149,6 @@
       const prefs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])
         .map(l => (l || '').toLowerCase());
 
-      // 逐一判斷
       for (const lang of prefs) {
         if (lang.startsWith('zh-hk') || lang.startsWith('zh-mo') || lang.startsWith('yue')) return 'yue';
         if (lang.startsWith('zh-tw') || lang.includes('hant')) return 'zh-Hant';
@@ -153,60 +156,37 @@
         if (lang.startsWith('km')) return 'km';
         if (lang.startsWith('vi')) return 'vi';
         if (lang.startsWith('th')) return 'th';
-        if (lang.startsWith('ms') || lang.startsWith('ms-my')) return 'ms';
+        if (lang.startsWith('ms')) return 'ms';
         if (lang.startsWith('en')) return 'en';
       }
-      return 'en'; // 預設英文
+      return 'en';
     }
 
     function applyI18n(dict) {
-      // <html lang>
-      document.documentElement.setAttribute('lang', dict.htmlLang || 'en');
-      // <title>
+      document.documentElement.setAttribute('lang', dict.htmlLang);
       document.title = dict.titleTag;
-      // <meta name="description">
+
       const mdesc = document.querySelector('meta[name="description"]');
-      if (mdesc) mdesc.setAttribute('content', dict.metaDesc);
-      // 內容文字
+      if (mdesc) mdesc.content = dict.metaDesc;
+
       const h1 = document.getElementById('t-title');
       const p  = document.getElementById('t-desc');
-      const hint = document.getElementById('t-hint');
+      const btn = document.getElementById('enterBtn');
       const logo = document.querySelector('.logo');
-      if (h1) h1.firstChild && (h1.firstChild.nodeValue = dict.h1);
-      if (p)  p.firstChild && (p.firstChild.nodeValue = dict.p);
-      if (hint) hint.innerHTML = dict.hintHTML;
+
+      if (h1) h1.textContent = dict.h1;
+      if (p)  p.textContent = dict.p;
+      if (btn) btn.textContent = dict.btn;
       if (logo) logo.alt = dict.alt;
-      // 設定後備連結 href（hint HTML 會重新產生 fallbackLink）
+
       const extra = window.location.search.replace(/^\?/, '');
       const sep = OFFICIAL_URL.includes('?') ? '&' : '?';
-      const target = extra ? (OFFICIAL_URL + sep + extra) : OFFICIAL_URL;
-      const fl = document.getElementById('fallbackLink');
-      if (fl) fl.href = target;
+      btn.href = extra ? (OFFICIAL_URL + sep + extra) : OFFICIAL_URL;
     }
 
-    // 執行 i18n
     const locale = pickLocale();
     applyI18n(I18N[locale] || I18N.en);
-
-    // === 跳轉（保留 UTM/參數） ===
-    (function redirect() {
-      const extra = window.location.search.replace(/^\?/, '');
-      const sep = OFFICIAL_URL.includes('?') ? '&' : '?';
-      const target = extra ? (OFFICIAL_URL + sep + extra) : OFFICIAL_URL;
-
-      // 後備連結（再次保險）
-      const fl = document.getElementById('fallbackLink');
-      if (fl) fl.href = target;
-
-      // 定時跳轉
-      setTimeout(() => {
-        try { /* 這裡可放追蹤事件，例如 fbq('track','ViewContent') */ } catch (e) {}
-        window.location.replace(target);
-      }, DELAY_MS);
-
-      // 返回快取頁時也帶走
-      window.addEventListener('pageshow', (e) => { if (e.persisted) window.location.replace(target); });
-    })();
   </script>
+
 </body>
 </html>
